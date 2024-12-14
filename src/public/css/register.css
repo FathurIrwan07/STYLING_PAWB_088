@@ -1,0 +1,68 @@
+body,
+html {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #4b4a4a;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.card {
+  background-color: #313131;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.header-image {
+  display: block;
+  margin: 0 auto;
+  width: 10em;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+.form-control {
+  width: 95%; /* Lebar penuh */
+  padding: 10px; /* Padding dalam input */
+  border: 1px solid #dadada; /* Border input */
+  border-radius: 5px; /* Sudut melengkung input */
+  font-size: 16px; /* Ukuran font */
+  background-color: #444; /* Warna latar belakang input */
+  color: #ffffff; /* Warna teks input */
+}
+.form-control:focus {
+  border-color: #4caf50; /* Warna border saat fokus */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Bayangan saat fokus */
+}
+.btn {
+  background-color: #4caf50; /* Warna tombol */
+  color: #fff; /* Warna teks tombol */
+  padding: 10px; /* Padding dalam tombol */
+  border: none; /* Tanpa border */
+  border-radius: 5px; /* Sudut melengkung tombol */
+  cursor: pointer; /* Kursor pointer saat hover */
+  width: 100%; /* Lebar penuh tombol */
+}
+.btn:hover {
+  background-color: #3e8e41; /* Warna tombol saat hover */
+}
