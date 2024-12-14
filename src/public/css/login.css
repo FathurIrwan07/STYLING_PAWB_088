@@ -1,0 +1,136 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #4b4a4a;
+}
+
+.container {
+  width: 60%;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.login-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #313131;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-right {
+  width: 40%;
+  padding: 20px;
+}
+
+.login-right img {
+  width: 120%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login-left {
+  width: 60%;
+  padding: 20px;
+}
+
+.login-left h2 {
+  margin-top: 0;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: left;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #000000;
+}
+
+.form-group input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"] {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 105%;
+  margin-top: 10px;
+}
+
+.register-button {
+  background-color: #d34605;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 105%;
+  margin-top: 10px;
+}
+
+button[type="submit"],
+.register-button {
+  display: block;
+}
+
+.register-button:hover {
+  background-color: #3e8e41;
+}
+
+a {
+  text-decoration: none;
+  color: #4caf50;
+  font-size: 16px;
+}
+
+.alert {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.password-toggle i {
+  font-size: 18px;
+  color: #666;
+}
+
+.password-toggle i:hover {
+  color: #333;
+}
+
+/* Media Queries untuk Responsif */

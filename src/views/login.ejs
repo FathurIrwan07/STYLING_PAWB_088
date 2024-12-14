@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/public/css/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+		<div class="login-box">
+		  <div class="login-left">
+			<form action="<%= url %>login/auth" method="POST">
+			  <h2>Login</h2>
+			  <div class="form-group">
+				<label>Email:</label>
+				<input
+				  type="email"
+				  name="email"
+				  placeholder="Masukan email"
+				  required
+				/>
+			  </div>
+			  <div class="form-group">
+				<label>Password:</label>
+				<input
+				  type="password"
+				  name="pass"
+				  id="password"
+				  placeholder="Masukan password"
+				  required
+				/>
+				<span class="password-toggle">
+				  <i class="fa fa-eye" aria-hidden="true"></i>
+				</span>
+			  </div>
+	  
+			  <button type="submit">Login</button>
+			  <button
+				type="button"
+				class="register-button"
+				onclick="window.location.href='<%= url %>register'"
+			  >
+				Register
+			  </button>
+	  
+			  <%if (pesanFlash) { %>
+			  <div class="alert">
+				<strong><%= statusFlash %></strong>
+				<%= pesanFlash %>
+			  </div>
+			  <% } %>
+			</form>
+		  </div>
+		  <div class="login-right">
+			<img src="/public/images/hitambg.png" alt="Gambar" />
+		  </div>
+		</div>
+	  </div>
+    </div>
+    <script>
+      const passwordToggle = document.querySelector(".password-toggle");
+      const passwordInput = document.querySelector("#password");
+
+      passwordToggle.addEventListener("click", () => {
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          passwordToggle.innerHTML =
+            '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+        } else {
+          passwordInput.type = "password";
+          passwordToggle.innerHTML =
+            '<i class="fa fa-eye" aria-hidden="true"></i>';
+        }
+      });
+    </script>
+  </body>
+</html>

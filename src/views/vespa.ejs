@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vespa</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/public/css/vespa.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Full jQuery -->
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light"
+      style="background-color: #23f0e5"
+    >
+      <a class="navbar-brand" href="<%= url %>">
+        <img
+          src="/public/images/logo.png"
+          alt="Logo"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="<%= url %>">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= url %>contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= url %>vespa">Todo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= url %>profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= url %>login/logout">
+              <i class="fas fa-sign-out-alt"></i> Sign Out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container mt-5 pt-5" style="margin-bottom: 200px">
+      <div class="text-center">
+        <h1>Vespa Gallery</h1>
+        <br />
+        <button
+          type="button"
+          class="btn btn-primary mb-3"
+          data-bs-toggle="modal"
+          data-bs-target="#tambahDataModal"
+        >
+          Tambah Data
+        </button>
+        <br />
+      </div>
+      <div class="card">
+        <div
+          class="card-header"
+          style="color: white; text-align: center; background-color: #23f0e5"
+        >
+          <b>Daftar Vespa</b>
+        </div>
+        <div class="card-body">
+          <% if (vespa.length > 0) { %>
+          <div class="row">
+            <% vespa.forEach(item => { %>
+            <div class="col-md-4 mb-3">
+              <div class="card h-100">
+                <div class="card-body" style="background-color: #23f0e5">
+                  <h5
+                    class="card-title"
+                    style="text-align: center; color: #dd2a66"
+                  >
+                    <b><%= item.nama %></b>
+                  </h5>
+                  <p class="card-text">
+                    <strong>Warna:</strong> <%= item.warna %><br />
+                    <strong>Harga:</strong> Rp<%= item.harga.toLocaleString() %>
+                  </p>
+                </div>
+                <div class="card-footer text-center">
+                  <button
+                    type="button"
+                    class="btn btn-warning btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editDataModal<%= item.id %>"
+                  >
+                    Edit
+                  </button>
+
+                  <a
+                    href="<%= url + 'vespa/delete/' + item.id %>"
+                    class="btn btn-danger btn-sm"
+                    onclick="return confirm('Yakin ingin menghapus data ini?')"
+                    >Hapus</a
+                  >
+                </div>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+          <% } else { %>
+          <p class="text-center">Tidak ada data</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Tambah Data -->
+    <div
+      class="modal fade"
+      id="tambahDataModal"
+      tabindex="-1"
+      aria-labelledby="modalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel"><b>Tambah Vespa</b></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="<%= url + 'vespa/save' %>" method="POST">
+              <div class="form-group">
+                <label for="nama">Nama</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nama"
+                  name="nama"
+                  placeholder="Masukan nama"
+                  required
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="warna">Warna</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="warna"
+                  name="warna"
+                  placeholder="Masukan warna"
+                  required
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="harga">Harga</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="harga"
+                  name="harga"
+                  placeholder="Masukan harga"
+                  required
+                />
+              </div>
+              <br />
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% vespa.forEach(item => { %>
+    <!-- Modal Edit Data -->
+    <div
+      class="modal fade"
+      id="editDataModal<%= item.id %>"
+      tabindex="-1"
+      aria-labelledby="modalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel"><b>Edit Vespa</b></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="<%= url + 'vespa/update/' + item.id %>" method="POST">
+              <div class="form-group">
+                <label for="nama">Nama</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nama"
+                  name="nama"
+                  value="<%= item.nama %>"
+                  required
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="warna">Warna</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="warna"
+                  name="warna"
+                  value="<%= item.warna %>"
+                  required
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="harga">Harga</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="harga"
+                  name="harga"
+                  value="<%= item.harga %>"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
